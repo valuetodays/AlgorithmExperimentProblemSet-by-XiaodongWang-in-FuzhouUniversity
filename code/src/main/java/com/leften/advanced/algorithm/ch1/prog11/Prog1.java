@@ -7,9 +7,9 @@ import java.util.Arrays;
  * @since 2019-04-04 18:19
  */
 public class Prog1 {
-    private int[] number = new int[10];
 
     public int[] cal(int pageNumber) {
+        int[] number = new int[10];
         Arrays.fill(number, 0);
 
         int page_temp = 0;
