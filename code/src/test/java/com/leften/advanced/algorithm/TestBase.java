@@ -20,13 +20,11 @@ public abstract class TestBase {
         for (TestAndAnswer testAndAnswer : testAndAnswerList) {
             List<String> testList = testAndAnswer.getTestList();
             List<String> answerList = testAndAnswer.getAnswerList();
-            // 一行测试对应10行答案
+            // 一行测试对应n行答案
             Assert.assertEquals(numberPerTest, testList.size());
             Assert.assertEquals(numberPerAnswer, answerList.size());
 
             autoTestCase.doAutoTest(testList, answerList);
-
-
         }
     }
 
@@ -85,7 +83,7 @@ public abstract class TestBase {
 
     private File getBasePath() {
         String testClassPath = TestBase.class.getResource("/").getPath();
-        String[] nameSplittedByDot = StringUtils.split(getClass().getPackage().getName(), ".");
+        String[] nameSplittedByDot = StringUtils.split(this.getClass().getPackage().getName(), ".");
         ArrayUtils.reverse(nameSplittedByDot);
         testClassPath += "../../../docs/" + nameSplittedByDot[1] + "/" + nameSplittedByDot[0];
         return new File(testClassPath);
